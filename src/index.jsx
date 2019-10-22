@@ -12,11 +12,8 @@ class ReactSwitch extends Component {
     super(props);
     const { height, width, handleDiameter, checked } = props;
     this.$handleDiameter = handleDiameter || height - 2;
-    this.$checkedPos = Math.max(
-      width - height,
-      width - (height + this.$handleDiameter) / 2
-    );
-    this.$uncheckedPos = Math.max(0, (height - this.$handleDiameter) / 2);
+    this.$checkedPos = (width - 2) - (height + 4) * -1;
+    this.$uncheckedPos = (width - 2) * -1;
     this.state = {
       $pos: checked ? this.$checkedPos : this.$uncheckedPos
     };
@@ -283,8 +280,8 @@ class ReactSwitch extends Component {
       display: "inline-block",
       cursor: disabled ? "default" : "pointer",
       borderRadius: "50%",
-      marginBottom: Math.max(2, height / 6),
-      marginLeft: (this.$handleDiameter + 5) * -2,
+      marginBottom: Math.max(2, (height - 4) / 6),
+      marginLeft: $pos,
       outline: 0,
       boxShadow: $hasOutline ? activeBoxShadow : boxShadow,
       border: 0,
