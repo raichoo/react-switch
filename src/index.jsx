@@ -275,14 +275,13 @@ class ReactSwitch extends Component {
     const handleStyle = {
       height: this.$handleDiameter,
       width: this.$handleDiameter,
-      background: "orange",
-      // background: getBackgroundColor(
-      //   $pos,
-      //   this.$checkedPos,
-      //   this.$uncheckedPos,
-      //   offHandleColor,
-      //   onHandleColor
-      // ),
+      background: getBackgroundColor(
+        $pos,
+        this.$checkedPos,
+        this.$uncheckedPos,
+        offHandleColor,
+        onHandleColor
+      ),
       display: "inline-block",
       cursor: disabled ? "default" : "pointer",
       borderRadius: "50%",
