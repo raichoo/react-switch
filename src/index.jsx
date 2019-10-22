@@ -224,7 +224,6 @@ class ReactSwitch extends Component {
       width,
       margin: Math.max(0, (this.$handleDiameter - height) / 2),
       display: "inline-block",
-      position: "relative",
       background: getBackgroundColor(
         $pos,
         this.$checkedPos,
@@ -285,22 +284,20 @@ class ReactSwitch extends Component {
       display: "inline-block",
       cursor: disabled ? "default" : "pointer",
       borderRadius: "50%",
-      position: "relative",
-      transform: `translateX(${$pos}px)`,
-      top: Math.min(0, (height - this.$handleDiameter) / -2),
-      left: (this.$handleDiameter + (2)) * -2,
+      marginBottom: Math.max(0, (height - this.$handleDiameter) / -2),
+      marginLeft: (this.$handleDiameter + (2)) * -2,
       outline: 0,
       boxShadow: $hasOutline ? activeBoxShadow : boxShadow,
       border: 0,
       WebkitTransition: $isDragging
         ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+        : "background-color 0.25s, marginLeft 0.25s, box-shadow 0.15s",
       MozTransition: $isDragging
         ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+        : "background-color 0.25s, marginLeft 0.25s, box-shadow 0.15s",
       transition: $isDragging
         ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s"
+        : "background-color 0.25s, marginLeft 0.25s, box-shadow 0.15s"
     };
 
     const inputStyle = {
@@ -310,7 +307,7 @@ class ReactSwitch extends Component {
       margin: -1,
       overflow: "hidden",
       padding: 0,
-      position: "absolute",
+      visibility: "hidden",
       width: 1
     };
 
