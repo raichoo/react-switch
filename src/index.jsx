@@ -202,7 +202,6 @@ class ReactSwitch extends Component {
     const { $pos, $isDragging, $hasOutline } = this.state;
 
     const rootStyle = {
-      position: "relative",
       display: "inline-block",
       textAlign: "left",
       opacity: disabled ? 0.5 : 1,
@@ -284,8 +283,8 @@ class ReactSwitch extends Component {
       display: "inline-block",
       cursor: disabled ? "default" : "pointer",
       borderRadius: "50%",
-      marginBottom: Math.max(0, (height - this.$handleDiameter) / -2),
-      marginLeft: (this.$handleDiameter + (2)) * -2,
+      marginBottom: Math.max(2, height / 6),
+      marginLeft: (this.$handleDiameter + 5) * -2,
       outline: 0,
       boxShadow: $hasOutline ? activeBoxShadow : boxShadow,
       border: 0,
