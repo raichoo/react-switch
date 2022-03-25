@@ -12,11 +12,8 @@ class ReactSwitch extends Component {
     super(props);
     const { height, width, handleDiameter, checked } = props;
     this.$handleDiameter = handleDiameter || height - 2;
-    this.$checkedPos = Math.max(
-      width - height,
-      width - (height + this.$handleDiameter) / 2
-    );
-    this.$uncheckedPos = Math.max(0, (height - this.$handleDiameter) / 2);
+    this.$checkedPos = -14;
+    this.$uncheckedPos = (width - 2) * -1;
     this.state = {
       $pos: checked ? this.$checkedPos : this.$uncheckedPos
     };
@@ -221,7 +218,6 @@ class ReactSwitch extends Component {
     const { $pos, $isDragging, $hasOutline } = this.state;
 
     const rootStyle = {
-      position: "relative",
       display: "inline-block",
       textAlign: "left",
       opacity: disabled ? 0.5 : 1,
@@ -242,7 +238,7 @@ class ReactSwitch extends Component {
       height,
       width,
       margin: Math.max(0, (this.$handleDiameter - height) / 2),
-      position: "relative",
+      display: "inline-block",
       background: getBackgroundColor(
         $pos,
         this.$checkedPos,
@@ -303,22 +299,21 @@ class ReactSwitch extends Component {
       ),
       display: "inline-block",
       cursor: disabled ? "default" : "pointer",
-      borderRadius: typeof borderRadius === "number" ? borderRadius - 1 : "50%",
-      position: "absolute",
-      transform: `translateX(${$pos}px)`,
-      top: Math.max(0, (height - this.$handleDiameter) / 2),
+      borderRadius: "50%",
+      marginBottom: Math.max(2, (height - 4) / 6),
+      marginLeft: $pos,
       outline: 0,
       boxShadow: $hasOutline ? activeBoxShadow : boxShadow,
       border: 0,
       WebkitTransition: $isDragging
         ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+        : "background-color 0.25s, marginLeft 0.25s, box-shadow 0.15s",
       MozTransition: $isDragging
         ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+        : "background-color 0.25s, marginLeft 0.25s, box-shadow 0.15s",
       transition: $isDragging
         ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s"
+        : "background-color 0.25s, marginLeft 0.25s, box-shadow 0.15s"
     };
 
     const uncheckedHandleIconStyle = {
@@ -366,7 +361,7 @@ class ReactSwitch extends Component {
       margin: -1,
       overflow: "hidden",
       padding: 0,
-      position: "absolute",
+      visibility: "hidden",
       width: 1
     };
 
